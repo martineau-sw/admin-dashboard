@@ -13,12 +13,12 @@ Reference image
 
 #### Todo
 
-- [ ] Gather Assets
-  - [ ] Font
-  - [ ] Dashboard logo
-  - [ ] Nav Item Icons
-  - [ ] Search Icon
-  - [ ] Profile pics
+- [x] Gather Assets
+  - [x] Dashboard logo
+  - [x] Nav Item Icons
+  - [x] Search Icon
+  - [x] Profile pics
+- [ ] Load Robot Font from GoogleFonts
 - [ ] Grid page layout
 - [ ] Grid Sidebar - 2col, 12row
 	- [ ] Logo Header area
