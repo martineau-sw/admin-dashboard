@@ -5,8 +5,13 @@
 
 :root {
   /* font-size: clamp(8px, 3vw, 16px); */
-  --accent-color: rgb(0 166 255);
-  --background-color-0: rgb(200 200 200);
+  --blue: rgb(16, 138, 205);
+  --orange: rgb(240 180 0);
+  --light-gray: rgb(220 230 240);
+  --gray: rgb(128 128 134);
+  --shadow: rgb(0 0 0 / 0.1);
+  --gutter: 5rem;
+  --white: rgb(255 255 255);
 }
 
 body {
@@ -14,9 +19,15 @@ body {
   grid-template-areas: 
   "sidebar header"
   "sidebar dashboard";
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 3fr 11fr;
+  grid-template-rows: 1fr 5fr;
   min-height: 100vh;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 #header {
@@ -25,73 +36,189 @@ body {
   grid-template-areas: 
   "search-bar profile-tab"
   "welcome actions";
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: 1fr 1fr;
-}
+  grid-template-columns: 5fr 3fr;
+  grid-template-rows: 2fr 3fr;
+  padding: 0rem 3rem 0rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem var(--shadow);
+  background-color: white;
+  z-index: 1;
 
-#search-bar {
-  display: grid;
-  grid-template-columns: 1fr 12fr;
-  align-items: center;
-  grid-area: search-bar;
-}
+  & #search-bar {
+    grid-area: search-bar;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    align-items: center;
+  
+    & input {
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 200;
+      background-color: var(--light-gray);
+      border: none;
+      border-radius: 2rem;
+    }
 
-#search-bar > input {
-  padding: 1em;
-  background-color: var(--background-color-0);
-  border: none;
-  border-radius: 2rem;
-}
+    & button {
+      
+      justify-self: left;
+    }
+  }
 
-#profile-tab {
-  grid-area: profile-tab;
-  display: grid;
-  grid-template-columns: repeat(3, 3fr);
-  align-items: center;
-  justify-items: center;
-}
+  & svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 
-#profile-tab > *{
-  display: inline;
-  align-items: center;
-}
+  & #profile-tab {
+    grid-area: profile-tab;
+    display: grid;
+    grid-template-columns: 3rem 3em 10rem;
+    align-items: center;
+    justify-items: center;
+    justify-content: right;
+    gap: 2rem;
 
-#welcome {
-  grid-area: welcome;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  align-items: center;
-}
+    & h4 {
+      font-size: 1.25rem;
+    }
 
-#actions {
-  grid-area: actions;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  justify-items: space-evenly;
-}
+    & img {
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0.5rem;
+    }
+  }
 
-#actions > button {
-  border: none;
-  border-radius: 2rem;
-  color: white;
-  background-color: var(--accent-color);
-  padding: .75em 2.75em;
-  font-weight: bold;
-  font-size: 1rem;
+  & #welcome {
+    grid-area: welcome;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    align-items: center;
+    justify-items: start;
+    gap: 1.5rem;
+    & p {
+      line-height: 1.5;
+      font-weight: 600;
+    } 
+    & img {
+      justify-self: right;
+      height: 4rem;
+      width: 4rem;
+      padding: 0.5rem;
+    }
+    & h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  & #actions {
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: right;
+    gap: 2.25rem;
+
+    & button {
+      border-radius: 2rem;
+      color: var(--white);
+      background-color: var(--blue);
+      padding: .75em;
+      font-weight: bold;
+      font-size: 1.15rem;
+      border: none;
+      text-align: center;
+    }
+  }
 }
 
 #sidebar {
-  grid-area: sidebar;
-  color: white;
-  background-color: var(--accent-color);
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  align-content: start;
+  gap: 5.5rem;
+  grid-area: sidebar;
+  color: var(--white);
+  background-color: var(--blue);
+  padding: 1rem;
+}
+
+#title {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;  
+  gap: 0.75rem;
+
+  & h1 {
+    font-weight: 500;
+  }
+
+  & svg {
+    fill: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    align-self: center;
+  }
+
+  & > .logo {
+    display: grid;
+    justify-items: center;
+    align-items: center;  
+  }
+}
+
+.nav-group {
+  display: grid;
+  gap: 1.75rem;
 }
 
 .nav-item {
-  display: contents;
+  font-family: inherit;
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  justify-self: left;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.75rem;
+
+  & > p {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  & > .icon {
+    display:grid;
+    place-items: center;
+  }
+
+  & svg {
+    fill: white;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 }
+
+
+.nav-item:hover {
+  color: var(--light-gray);
+
+  & svg {
+    fill: var(--light-gray);
+  }
+}
+
+.nav-item:active {
+  color: var(--gray);
+  
+  & svg {
+    fill: var(--gray);
+  }
+}
+
 
 #dashboard {
   grid-area: dashboard;
@@ -100,77 +227,126 @@ body {
   "projects-section announcements-section"
   "projects-section trending-section";
   grid-template-columns: 3fr 1fr;
-  background-color: var(--background-color-0);
-  gap: 2rem;
+  background-color: var(--light-gray);
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+
+  & h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  & p {
+    color: var(--gray);
+  }
+
+  & .card {
+    background-color: var(--white);
+    border-radius: 0.5em;
+    box-shadow: 0.25em 0.25em 0.25em var(--shadow);
+    padding: 2em;
+  }
 }
 
-.card {
-  background-color: white;
-  border-radius: 0.5em;
-  box-shadow: 1em 1em 1em rgb(0 0 0 / 0.1);
-  width: 100%;
-  height: 100%;
-}
+
 
 #projects-section {
   grid-area: projects-section;
-}
 
-#projects-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  width: 100%;
-  height: 100%;
-  gap: 2rem;
-}
+  & #projects-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
 
-.project {
-  border-left: 1em solid rgb(255 200 0);
+  & h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  & p {
+    font-size: 1.1rem;
+  }
+
+  & .project {
+    border-left: 0.5rem solid var(--orange);
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+  }
+
+  & .buttons {
+    justify-self: end;  
+  }
+  
+  & button {
+    background-color: transparent;
+    border: none;
+    margin: 0 1em;
+  }
+
+  & svg {
+    fill: rgb(0 0 0);
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 }
 
 #announcements-section {
-  grid-area: announcements-section
-}
+  grid-area: announcements-section;
 
-#announcements-group {
-  background-color: white;
-}
+  & .announcement:first-child {
+    
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 1.5rem;
+  }
 
-.announcement {
-  border-bottom: 1px solid var(--background-color-0);
-}
+  & .announcement:nth-child(2) {
+    border-bottom: 1px solid var(--light-gray);
+    padding: 1.5rem 0;
+  }
 
-.announcement:last-child {
-  border: none;
+  & .announcement:last-child {
+    padding-top: 1.5rem;
+    border: none;
+  }
+
+  & p {
+    overflow: hidden;
+    font-size: 0.85rem;
+    height: calc(0.85rem * 1.2 * 3);
+    white-space: pre-line;
+    text-overflow: ellipsis;
+  }
 }
 
 #trending-section {
   grid-area: trending-section;
 
+  & #trending-group {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  & .profile {
+    display: contents;
+  }
+
+  & .username {
+    color: rgb(0 0 0);
+    line-height: 1.5;
+  }
+
+  & .profile-pic {
+    width: 1.5em;
+    height: 1.5em;
+  }
 }
-
-#trending-group {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-}
-
-.profile {
-  display: contents;
-}
-
-.project {
-  background-color: white;
-}
-
-#tools {
-  font-size: 1rem;
-}
-
-
 
 .profile-pic {
-  display: inline;
   width: 2em;
   height: 2em;
   border-radius: 50%;
@@ -180,8 +356,24 @@ body {
   overflow: visible;
 }
 
+button:hover{
+  color: var(--light-gray) !important;
+
+  & svg {
+    fill: var(--light-gray) !important;
+  }
+}
+
+button:active {
+  color: var(--gray) !important;
+  
+  & svg {
+    fill: var(--gray) !important;
+  }
+}
+
 .morgan {
-  background-color: rgb(255 255 0);
+  background-color: var(--orange);
 }
 
 .tegan {
@@ -194,9 +386,4 @@ body {
 
 .alex {
   background-color: rgb(128 128 255);
-}
-
-svg {
-  width: 2em;
-  height: 2em;
 }
