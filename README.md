@@ -18,7 +18,7 @@ Reference image
   - [x] Nav Item Icons
   - [x] Search Icon
   - [x] Profile pics
-- [ ] Load Robot Font from GoogleFonts
+- [x] Load Robot Font from GoogleFonts
 - [ ] Grid page layout
 - [ ] Grid Sidebar - 2col, 12row
 	- [ ] Logo Header area
